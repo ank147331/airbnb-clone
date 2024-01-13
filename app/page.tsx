@@ -1,13 +1,13 @@
 import React from 'react'
 
-const page = () => {
+const Home = () => {
   return (
     <div>
-      <h1>hi this is first page
+      <h1 className='text-slate-400'> Hello Airbnb
         
       </h1>
     </div>
   )
 }
 
-export default page
+export default Home
