@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import Navbar from './component/navbar/Navbar'
+import RegisterModal from './component/modals/RegisterModal'
+import { Toaster } from 'react-hot-toast'
 
 
 
@@ -24,6 +26,8 @@ export default function RootLayout({
 
       
       <body className={font.className}>
+        <Toaster/>
+        <RegisterModal />
         <Navbar />
         {children}
         </body>
