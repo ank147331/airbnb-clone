@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
-interface containerprops  {
-  children : React.ReactNode
-};
+interface containerprops {
+  children: React.ReactNode;
+}
 
-const Container : React.FC<containerprops> = ({children}) => {
+const Container: React.FC<containerprops> = ({ children }) => {
   return (
     <div
-    className="
+      className="
       max-w-[2520px]
       mx-auto
       xl:px-10
@@ -15,11 +15,10 @@ const Container : React.FC<containerprops> = ({children}) => {
       sm:px-2
       px-4
     "
-  >
-    {children}
-  </div>
- );
-    
-}
+    >
+      {children}
+    </div>
+  );
+};
 
-export default Container
+export default Container;
