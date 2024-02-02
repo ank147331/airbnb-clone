@@ -4,6 +4,9 @@ import { Nunito } from 'next/font/google'
 import Navbar from './component/navbar/Navbar'
 import RegisterModal from './component/modals/RegisterModal'
 import { Toaster } from 'react-hot-toast'
+import LoginModal from './component/modals/LoginModal'
+import getCurrentUser from './actions/getCurrentUser'
+import RentModal from './component/modals/RentModal'
 
 
 
@@ -16,19 +19,24 @@ const font =  Nunito({
   subsets : ["latin"]
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
 
       
       <body className={font.className}>
         <Toaster/>
+        <RentModal/>
         <RegisterModal />
-        <Navbar />
+        <LoginModal/>
+        <Navbar currentUser={currentUser} />
         {children}
         </body>
     </html>

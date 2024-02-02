@@ -8,9 +8,10 @@ import { useCallback,useState } from 'react'
 import { Field, FieldValue,FieldValues,SubmitHandler,useForm } from 'react-hook-form'
 
 import useRegisterModal from '@/app/hooks/useRegisterModal'
-import { error } from 'console'
-import Modal from './Modal'
+import useLoginModal from '@/app/hooks/useLoginModal'
 
+
+import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../input/Input'
 import Button from '../Button'
@@ -19,6 +20,7 @@ import toast from 'react-hot-toast'
 const RegisterModal = () => {
 
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const[isLoading,setIsLoading] = useState(false);
 
     const{
@@ -41,7 +43,7 @@ const RegisterModal = () => {
         axios.post('api/register',data)
         .then(()=>{
             registerModal.onClose();
-           toast.success('Loggen In')
+           toast.success('Successfully Created')
         })
         .catch((error)=>{
             toast.error('something went wrong')
@@ -52,9 +54,10 @@ const RegisterModal = () => {
 
     }
 
-    const onToggle = useCallback(()=>{
-        registerModal.onOpen
-    },[registerModal])
+    const onToggle = useCallback(() => {
+      loginModal.onClose();
+      registerModal.onOpen();
+    }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
